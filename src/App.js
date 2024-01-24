@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import "./App.css"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import CreateAccount from "./components/CreateAccount";
+import OTPPage from "./components/OTPPage";
+import AccountCreatedPage from "./components/AccountCreatedPage";
+import Dashboard from "./components/Dashboard";
+import AllPostPage from "./components/SinglePost";
+import LastPage from "./components/CreatePost";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/create-account" element={<CreateAccount />} />
+        {/* Ensure that the path includes a parameter for the email */}
+        <Route path="/otp-page/:email" element={<OTPPage />} />
+        <Route path="/account-created" element={<AccountCreatedPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/all-post" element={<AllPostPage />} />
+        <Route path="/create-post" element={<LastPage />} />
+      </Routes>
+    </Router>
   );
 }
 
